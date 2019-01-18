@@ -39,6 +39,8 @@ defmodule Re.Listing do
     field :zap_highlight, :boolean, default: false
     field :zap_super_highlight, :boolean, default: false
 
+    embeds_many :tags, Re.Listings.Schemas.Tag, on_replace: :delete
+
     belongs_to :address, Re.Address
     belongs_to :user, Re.User
     has_many :images, Re.Image
@@ -92,6 +94,7 @@ defmodule Re.Listing do
   def changeset(struct, params, "admin") do
     struct
     |> cast(params, @admin_attributes)
+    |> cast_embed(:tags, with: &Re.Listings.Schemas.Tag.changeset/2)
     |> validate_attributes()
     |> validate_number(
       :price,
