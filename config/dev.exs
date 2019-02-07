@@ -23,4 +23,20 @@ config :re, Re.Repo,
   hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
   pool_size: 10
 
+config :re_tags, ReTags.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("POSTGRES_USERNAME") || "postgres",
+  password: System.get_env("POSTGRES_PASSWORD") || "postgres",
+  database: "re_tags_readstore_dev",
+  hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
+  pool_size: 10
+
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: System.get_env("POSTGRES_USERNAME") || "postgres",
+  password: System.get_env("POSTGRES_PASSWORD") || "postgres",
+  database: "re_tags_eventstore_dev",
+  hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
+  pool_size: 10
+
 config :re_integrations, ReIntegrations.Notifications.Emails.Mailer, adapter: Swoosh.Adapters.Local
