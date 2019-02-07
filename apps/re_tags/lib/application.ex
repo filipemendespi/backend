@@ -1,5 +1,7 @@
 defmodule ReTags.Application do
-  @moduledoc false
+  @moduledoc """
+  Application for the tag system
+  """
   use Application
 
   def start(_type, _args) do
