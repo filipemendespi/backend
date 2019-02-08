@@ -69,6 +69,18 @@ config :mime, :types, %{
 
 config :phoenix, :json_library, Jason
 
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections,
+  repo: ReTags.Repo
+
+config :vex,
+  sources: [
+    ReTags.Support.Validators,
+    Vex.Validators
+  ]
+
 import_config "#{Mix.env()}.exs"
 
 import_config "timber.exs"

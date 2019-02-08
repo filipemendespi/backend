@@ -16,7 +16,8 @@ defmodule Re.Umbrella.Mixfile do
     [
       {:credo, "~> 0.9", only: [:dev, :test], runtime: false},
       {:timber, "~> 3.0.0"},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:poison, "~> 3.1"}
     ]
   end
 

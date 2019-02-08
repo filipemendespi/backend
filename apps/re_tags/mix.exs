@@ -9,14 +9,15 @@ defmodule ReTags.MixProject do
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.7",
-      start_permanent: Mix.env() == :prod,
+      elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [coveralls: :test]
     ]
   end
 
@@ -36,6 +37,12 @@ defmodule ReTags.MixProject do
       {:postgrex, "~> 0.13"},
       {:eventstore, "~> 0.15"},
       {:timber, "~> 3.0.0"},
+      {:commanded, "~> 0.17"},
+      {:commanded_eventstore_adapter, "~> 0.4"},
+      {:commanded_ecto_projections, "~> 0.7"},
+      {:exconstructor, "~> 1.1"},
+      {:vex, "~> 0.6"},
+      {:ex_machina, "~> 2.2", only: :test}
     ]
   end
 
