@@ -19,6 +19,13 @@
     has_one: 2,
     add: 2,
     add: 3,
-    remove: 1
+    remove: 1,
+    middleware: 1,
+    identify: 2,
+    dispatch: 2,
+    validates: 2,
+    validates: 4,
+    assert_events: 2,
+    assert_receive_event: 2
   ]
 ]

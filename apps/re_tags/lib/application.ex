@@ -9,7 +9,7 @@ defmodule ReTags.Application do
 
     children = [
       supervisor(ReTags.Repo, []),
-      supervisor(ReTags.Tags.Projections.Supervisor, []),
+      supervisor(ReTags.Tags.Projections.Supervisor, [])
     ]
 
     opts = [strategy: :one_for_one, name: ReTags.Supervisor]
