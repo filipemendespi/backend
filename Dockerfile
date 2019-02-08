@@ -23,6 +23,7 @@ COPY mix.lock mix.lock
 # NOTE (jpd): there must be a better way to do this
 COPY apps/re_integrations/mix.exs apps/re_integrations/mix.exs
 COPY apps/re_web/mix.exs apps/re_web/mix.exs
+COPY apps/re_tags/mix.exs apps/re_tags/mix.exs
 COPY apps/re/mix.exs apps/re/mix.exs
 RUN mix deps.get \
     && mix deps.compile
