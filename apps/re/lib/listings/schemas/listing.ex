@@ -37,6 +37,9 @@ defmodule Re.Listing do
 
     belongs_to :address, Re.Address
     belongs_to :user, Re.User
+
+    embeds_many(:tags, Re.Listings.Schemas.Tag, on_replace: :delete)
+
     has_many :images, Re.Image
     has_many :price_history, Re.Listings.PriceHistory
     has_many :listings_visualisations, Re.Statistics.ListingVisualization
@@ -85,6 +88,7 @@ defmodule Re.Listing do
   def changeset(struct, params, "admin") do
     struct
     |> cast(params, @admin_attributes)
+    |> cast_embed(:tags, with: &Re.Listings.Schemas.Tag.changeset/2)
     |> validate_attributes()
     |> validate_number(
       :price,

@@ -6,6 +6,7 @@
     has_many: 2,
     belongs_to: 2,
     embeds_one: 2,
+    embeds_many: 3,
     many_to_many: 3,
     config: 2,
     enum: 2,
