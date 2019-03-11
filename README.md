@@ -13,7 +13,7 @@
 ## Install
 
 * Install dependencies with `mix deps.get`
-* Create, migrate and seed your database with `cd apps/re && mix ecto.setup`
+* Create, migrate and seed your database with `mix setup`
 * Rename `config/dev.secret-example.exs` to `config/dev.secret.exs` and follow instructions at the top of the file to generate necessary keys.
 * Install git hooks with `mix git.hook`
 
@@ -31,7 +31,7 @@
 
 ## Run
 
-* Prepare database with `mix ecto.setup`
+* Prepare database with `mix setup`
 * Start Phoenix endpoint with `mix phx.server`
 * Check `http://localhost:4000/graphql_api`
 * WebSocket subscriptions at `ws://localhost:4000/socket`

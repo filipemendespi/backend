@@ -8,7 +8,7 @@ wait-for-it.sh \
     -- echo 'database available'
 
 echo 'database setup'
-cd apps/re && mix ecto.setup || true
+mix setup || true
 
 # TODO (jpd): allow custom command to be executed
 echo 'app available'
