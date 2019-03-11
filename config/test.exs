@@ -31,6 +31,14 @@ config :re, Re.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   migration_source: "old_schema_migrations"
 
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: System.get_env("POSTGRES_USERNAME") || "postgres",
+  password: System.get_env("POSTGRES_PASSWORD") || "postgres",
+  database: "re_test",
+  hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
+  pool_size: 10
+
 config :account_kit,
   app_id: "123"
 

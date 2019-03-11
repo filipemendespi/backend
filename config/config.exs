@@ -65,6 +65,12 @@ config :mime, :types, %{
 
 config :phoenix, :json_library, Jason
 
+config :eventstore, column_data_type: "jsonb"
+
+config :eventstore, EventStore.Storage,
+  serializer: EventStore.JsonbSerializer,
+  types: EventStore.PostgresTypes
+
 import_config "#{Mix.env()}.exs"
 
 import_config "timber.exs"
