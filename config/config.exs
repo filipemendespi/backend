@@ -71,6 +71,12 @@ config :eventstore, EventStore.Storage,
   serializer: EventStore.JsonbSerializer,
   types: EventStore.PostgresTypes
 
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+config :commanded_ecto_projections,
+  repo: Re.Repo
+
 import_config "#{Mix.env()}.exs"
 
 import_config "timber.exs"
