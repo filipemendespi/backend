@@ -24,7 +24,11 @@ defmodule Re.Unit do
     field :dependencies, :integer
     field :balconies, :integer
 
-    belongs_to :listing, Re.Listing
+    belongs_to :listing, Re.Listing,
+      foreign_key: :listing_uuid,
+      references: :uuid,
+      type: Ecto.UUID
+
     timestamps()
   end
 
