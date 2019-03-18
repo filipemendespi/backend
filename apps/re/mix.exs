@@ -53,7 +53,10 @@ defmodule Re.Mixfile do
       {:uuid, "~> 1.1"},
       {:phoenix_pubsub, "~> 1.1"},
       {:scrivener_ecto, "~> 1.3"},
-      {:eventstore, "~> 0.15"}
+      {:eventstore, "~> 0.15.0"},
+      {:commanded, "~> 0.17.0"},
+      {:commanded_eventstore_adapter, "~> 0.4.0"},
+      {:commanded_ecto_projections, "~> 0.7.0"}
     ]
   end
 
