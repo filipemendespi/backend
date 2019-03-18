@@ -26,11 +26,15 @@ config :re, Re.Repo,
 
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
+  types: EventStore.PostgresTypes,
   username: System.get_env("POSTGRES_USERNAME") || "postgres",
   password: System.get_env("POSTGRES_PASSWORD") || "postgres",
   database: "re_dev",
   hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
   pool_size: 10
+
+config :commanded_ecto_projections,
+  repo: Re.Repo
 
 config :re_integrations, ReIntegrations.Notifications.Emails.Mailer,
   adapter: Swoosh.Adapters.Local

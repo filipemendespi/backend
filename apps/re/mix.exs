@@ -52,10 +52,10 @@ defmodule Re.Mixfile do
       {:uuid, "~> 1.1"},
       {:phoenix_pubsub, "~> 1.1"},
       {:scrivener_ecto, "~> 1.3"},
-      {:eventstore, "~> 0.15.0"},
       {:commanded, "~> 0.17.0"},
-      {:commanded_eventstore_adapter, "~> 0.4.0"},
-      {:commanded_ecto_projections, "~> 0.7.0"}
+      {:eventstore, "~> 0.15.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:commanded_eventstore_adapter, "~> 0.4.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:commanded_ecto_projections, "~> 0.7.0", runtime: Mix.env() in ~w(prod dev)a}
     ]
   end
 
@@ -70,8 +70,12 @@ defmodule Re.Mixfile do
         "ecto.create --quiet",
         "ecto.migrate --quiet"
       ],
+      setup_test: [
+        "ecto.create --quiet",
+        "ecto.migrate --quiet"
+      ],
       reset: ["event_store.drop", "ecto.drop", "setup"],
-      test: ["setup", "test"]
+      test: ["setup_test", "test"]
     ]
   end
 end
