@@ -77,6 +77,10 @@ config :commanded,
 config :commanded_ecto_projections,
   repo: Re.Repo
 
+config :sentry,
+  included_environments: ~w(production staging),
+  environment_name: System.get_env("ENV") || "development"
+
 import_config "#{Mix.env()}.exs"
 
 import_config "timber.exs"

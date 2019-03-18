@@ -27,6 +27,7 @@ config :re, Re.Repo,
   username: System.get_env("POSTGRES_USERNAME") || "postgres",
   password: System.get_env("POSTGRES_PASSWORD") || "postgres",
   database: "re_test",
+  port: String.to_integer(System.get_env("POSTGRES_PORT") || "5432") ,
   hostname: System.get_env("POSTGRES_HOSTNAME") || "localhost",
   pool: Ecto.Adapters.SQL.Sandbox,
   migration_source: "old_schema_migrations"
@@ -65,6 +66,3 @@ config :re_integrations,
   credipronto_account_id: "test_account_id",
   pipedrive_webhook_user: "testuser",
   pipedrive_webhook_pass: "testpass"
-
-config :honeybadger,
-  environment_name: :test
