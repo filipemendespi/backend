@@ -35,7 +35,8 @@ config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("EVENTSTORE_POOL_SIZE") || "5"),
-  ssl: true
+  ssl: true,
+  types: EventStore.PostgresTypes
 
 config :re_integrations, ReIntegrations.Notifications.Emails.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,

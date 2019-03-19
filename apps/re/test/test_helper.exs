@@ -1,3 +1,8 @@
+{:ok, _pid} =
+  Commanded.EventStore.Adapters.InMemory.start_link(
+    serializer: Commanded.Serialization.JsonSerializer
+  )
+
 ExUnit.start()
 
 Ecto.Adapters.SQL.Sandbox.mode(Re.Repo, :manual)

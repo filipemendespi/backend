@@ -26,6 +26,7 @@ config :re, Re.Repo,
 
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
+  types: EventStore.PostgresTypes,
   username: System.get_env("POSTGRES_USERNAME") || "postgres",
   password: System.get_env("POSTGRES_PASSWORD") || "postgres",
   database: "re_dev",

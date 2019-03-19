@@ -67,10 +67,6 @@ config :phoenix, :json_library, Jason
 
 config :eventstore, column_data_type: "jsonb"
 
-config :eventstore, EventStore.Storage,
-  serializer: EventStore.JsonbSerializer,
-  types: EventStore.PostgresTypes
-
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.EventStore
 
