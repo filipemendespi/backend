@@ -55,7 +55,8 @@ defmodule Re.Mixfile do
       {:commanded, "~> 0.17.0"},
       {:eventstore, "~> 0.15.0", runtime: Mix.env() in ~w(prod dev)a},
       {:commanded_eventstore_adapter, "~> 0.4.0", runtime: Mix.env() in ~w(prod dev)a},
-      {:commanded_ecto_projections, "~> 0.7.0", runtime: Mix.env() in ~w(prod dev)a}
+      {:commanded_ecto_projections, "~> 0.7.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:sentry, "~> 6.4"}
     ]
   end
 
