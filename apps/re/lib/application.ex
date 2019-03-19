@@ -9,18 +9,19 @@ defmodule Re.Application do
 
   alias Re.{
     Listings.History.Server,
-    Statistics.Visualizations
+    Statistics.Visualizations,
+    Calendars
   }
 
   def start(_type, _args) do
     children =
       [
         supervisor(Re.Repo, []),
-        supervisor(Phoenix.PubSub.PG2, [Re.PubSub, []])
+        supervisor(Phoenix.PubSub.PG2, [Re.PubSub, []]),
+        supervisor(Calendars.Supervisor, [])
       ] ++ extra_processes(Mix.env())
 
-    opts = [strategy: :one_for_one, name: Re.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, strategy: :one_for_one, name: Re.Supervisor)
   end
 
   defp extra_processes(:test), do: []
