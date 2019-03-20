@@ -33,17 +33,19 @@ defmodule Re.Mixfile do
 
   defp deps do
     [
-      {:ecto, "~> 1.0 or ~> 2.0 or ~> 2.1"},
-      {:postgrex, ">= 0.0.0"},
+      {:ecto, "~> 3.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, "~> 0.13.0 or ~> 0.14.0"},
+      {:poison, "~> 3.0 or ~> 4.0"},
       {:comeonin, "~> 3.2"},
-      {:ex_machina, "~> 2.1", only: :test},
+      {:ex_machina, "~> 2.2", only: :test},
       {:bodyguard, "~> 2.1"},
       {:faker, "~> 0.9.0", only: :test},
       {:email_checker, "~> 0.1"},
       {:dataloader, "~> 1.0"},
       {:currency_formatter, "~> 0.4"},
-      {:timber, "~> 3.0.0"},
-      {:timber_ecto, "~> 1.0"},
+      {:timber, "~> 3.1"},
+      {:timber_ecto, "~> 2.1"},
       {:nimble_csv, "~> 0.3"},
       {:timex, "~> 3.3"},
       {:tzdata, "~> 0.5"},
@@ -51,11 +53,11 @@ defmodule Re.Mixfile do
       {:xml_builder, "~> 2.1"},
       {:uuid, "~> 1.1"},
       {:phoenix_pubsub, "~> 1.1"},
-      {:scrivener_ecto, "~> 1.3"},
-      {:commanded, "~> 0.17.0"},
-      {:eventstore, "~> 0.15.0", runtime: Mix.env() in ~w(prod dev)a},
-      {:commanded_eventstore_adapter, "~> 0.4.0", runtime: Mix.env() in ~w(prod dev)a},
-      {:commanded_ecto_projections, "~> 0.7.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:scrivener_ecto, "~> 2.1"},
+      {:commanded, "~> 0.18.0"},
+      {:eventstore, "~> 0.16.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:commanded_eventstore_adapter, "~> 0.5.0", runtime: Mix.env() in ~w(prod dev)a},
+      {:commanded_ecto_projections, "~> 0.8.0", runtime: Mix.env() in ~w(prod dev)a},
       {:sentry, "~> 6.4"}
     ]
   end
