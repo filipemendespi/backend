@@ -32,7 +32,7 @@ defmodule Re.Umbrella.Mixfile do
         "event_store.init --quiet"
       ],
       reset: ["event_store.drop", "ecto.drop", "setup"],
-      test: ["setup", "test"],
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "git.hook": &git_hook/1,
       compose: &compose/1
     ]

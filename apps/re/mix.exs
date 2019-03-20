@@ -24,9 +24,19 @@ defmodule Re.Mixfile do
   def application do
     [
       mod: {Re.Application, []},
-      extra_applications: [:logger, :runtime_tools, :sentry]
+      extra_applications: extra_applications(Mix.env())
     ]
   end
+
+  defp extra_applications(:test), do: [:logger]
+
+  defp extra_applications(_),
+    do: [
+      :logger,
+      :runtime_tools,
+      :sentry,
+      :eventstore
+    ]
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
@@ -55,8 +65,7 @@ defmodule Re.Mixfile do
       {:phoenix_pubsub, "~> 1.1"},
       {:scrivener_ecto, "~> 2.1"},
       {:commanded, "~> 0.18"},
-      {:eventstore, "~> 0.16"},
-      {:commanded_eventstore_adapter, "~> 0.5"},
+      {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test},
       {:commanded_ecto_projections, "~> 0.8"},
       {:sentry, "~> 6.4"}
     ]
@@ -74,7 +83,7 @@ defmodule Re.Mixfile do
         "ecto.migrate --quiet"
       ],
       reset: ["event_store.drop", "ecto.drop", "setup"],
-      test: ["setup", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
 end

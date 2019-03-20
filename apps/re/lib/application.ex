@@ -14,7 +14,7 @@ defmodule Re.Application do
   }
 
   def start(_type, _args) do
-    attach_telemetry()
+    attach_telemetry(Mix.env())
 
     children =
       [
@@ -34,7 +34,9 @@ defmodule Re.Application do
       worker(Visualizations, [])
     ]
 
-  defp attach_telemetry do
+  defp attach_telemetry(:test), do: :ok
+
+  defp attach_telemetry(_) do
     :ok =
       :telemetry.attach(
         "timber-ecto-query-handler",
