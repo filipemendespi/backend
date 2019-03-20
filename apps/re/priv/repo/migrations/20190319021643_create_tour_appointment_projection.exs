@@ -8,7 +8,7 @@ defmodule Re.Repo.Migrations.CreateTourAppointmentProjection do
       add :wants_pictures, :boolean
       add :options, :jsonb, default: "[]"
       add :user_id, references(:users)
-      add :listing_id, references(:listings, column: :uuid, type: :uuid)
+      add :listing_uuid, references(:listings, column: :uuid, type: :uuid)
 
       timestamps()
     end

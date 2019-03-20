@@ -1,4 +1,5 @@
 defmodule Re.Calendars.Events.TourAppointmentScheduled do
+  @derive Jason.Encoder
   defstruct [
     :lead_id,
     :wants_tour,

@@ -21,7 +21,7 @@ defmodule Re.Calendars.TourAppointments do
     params
     |> schedule_tour_changeset(%{lead_id: lead_id, listing_id: listing.uuid, user_id: user.id})
     |> ScheduleTourAppointment.new()
-    |> Router.dispatch()
+    |> Router.dispatch(consistency: :strong)
     |> case do
       :ok -> get_uuid(TourAppointment, lead_id)
       error -> error

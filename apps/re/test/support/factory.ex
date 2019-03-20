@@ -145,6 +145,15 @@ defmodule Re.Factory do
 
   def tour_appointment_factory, do: %Re.Calendars.TourAppointment{}
 
+  def tour_appointment_command_factory do
+    %{
+      lead_id: UUID.uuid4(),
+      wants_pictures: true,
+      wants_tour: true,
+      options: []
+    }
+  end
+
   def development_factory do
     %Re.Development{
       name: Name.name(),

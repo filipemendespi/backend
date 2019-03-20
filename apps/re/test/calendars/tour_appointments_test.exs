@@ -1,8 +1,7 @@
 defmodule Re.Calendars.TourAppointmentsTest do
-  use InMemoryEventStoreCase
+  use Re.DataCase
 
   import Commanded.Assertions.EventAssertions
-  import Re.EventStoreFactory
 
   alias Re.{
     Calendars.TourAppointments,
@@ -11,16 +10,14 @@ defmodule Re.Calendars.TourAppointmentsTest do
   }
 
   test "a tour appointment should be scheduled" do
-    {:ok, tour_appointment} =
-      TourAppointments.schedule_tour(build(:tour_appointment), %{uuid: UUID.uuid4()}, %{id: 1})
+    user = insert(:user)
+    listing = insert(:listing)
+    TourAppointments.schedule_tour(build(:tour_appointment_command), listing, user)
 
     assert_receive_event(TourAppointmentScheduled, fn tour_appointment ->
-      assert tour_appointment.lead_id == ""
       assert tour_appointment.wants_tour
       assert tour_appointment.wants_pictures
       assert tour_appointment.options == []
     end)
-
-    assert Repo.get(TourAppointment, tour_appointment.uuid)
   end
 end

@@ -1,11 +1,14 @@
 defmodule Re.Calendars.Projectors.TourAppointmentScheduled do
   use Commanded.Projections.Ecto,
-    name: "Calendars.Projectors.TourAppointmentScheduled"
+    name: "Calendars.Projectors.TourAppointmentScheduled",
+    consistency: :strong
 
-  alias Re.Calendars.Events.TourAppointmentScheduled
-  alias Re.Calendars.Projections.TourAppointment
+  alias Re.Calendars.{
+    Events.TourAppointmentScheduled,
+    Projections.TourAppointment
+  }
 
-  project %TourAppointmentScheduled{} = tas do
+  project(%TourAppointmentScheduled{} = tas, _metadata, fn multi ->
     Ecto.Multi.insert(
       multi,
       :tour_appointment_scheduled,
@@ -18,5 +21,5 @@ defmodule Re.Calendars.Projectors.TourAppointmentScheduled do
         listing_uuid: tas.listing_id
       }
     )
-  end
+  end)
 end

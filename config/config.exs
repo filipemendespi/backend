@@ -68,8 +68,7 @@ config :phoenix, :json_library, Jason
 config :eventstore, column_data_type: "jsonb"
 
 config :commanded,
-  event_store_adapter: Commanded.EventStore.Adapters.EventStore,
-  default_consistency: :strong
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
 
 config :commanded_ecto_projections,
   repo: Re.Repo
