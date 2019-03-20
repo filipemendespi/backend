@@ -14,6 +14,8 @@ defmodule Re.Application do
   }
 
   def start(_type, _args) do
+    attach_telemetry()
+
     children =
       [
         supervisor(Re.Repo, []),
@@ -31,4 +33,14 @@ defmodule Re.Application do
       worker(Server, []),
       worker(Visualizations, [])
     ]
+
+  defp attach_telemetry do
+    :ok =
+      :telemetry.attach(
+        "timber-ecto-query-handler",
+        [:re, :repo, :query],
+        &Timber.Ecto.handle_event/4,
+        []
+      )
+  end
 end
